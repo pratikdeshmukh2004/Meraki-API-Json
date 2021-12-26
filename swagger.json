@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Meraki API Json"
+  },
+  "paths": {
+    "/courses": {
+      "get": {
+        "tags": ["Courses"],
+        "summary": "List all courses.",
+        "operationId": "listcourses",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Courses"],
+        "summary": "Create new course",
+        "operationId": "createcourse",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Course object that needs to be added to the Courses",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/courses"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/courses/{courseId}": {
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get course by ID.",
+        "operationId": "getcourses",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "ID of course to update",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Courses"],
+        "summary": "Update course by ID",
+        "operationId": "updatecourse",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "CourseId that need to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated course object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/courses"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Courses"],
+        "summary": "Delete course by ID.",
+        "operationId": "delcourses",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "ID of course to deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "courses": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "days_to_complete": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "short_description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "course_type": {
+          "type": "string"
+        },
+        "lang_available": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
